@@ -14,9 +14,14 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://plant-disease-detection-frontend-eight.vercel.app",
+    origin: "*",
   })
 );
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 //routes
 app.use("/api/v1", diseaseRoutes);
