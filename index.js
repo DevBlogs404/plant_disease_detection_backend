@@ -1,5 +1,4 @@
 import express from "express";
-import { HfInference } from "@huggingface/inference";
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -11,18 +10,9 @@ dotenv.config();
 const app = express();
 
 //middlewares
-// app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
-  next();
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 //routes
 app.use("/api/v1", diseaseRoutes);
@@ -32,4 +22,8 @@ const port = process.env.PORT || 4949;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+});
+
+app.use("/", (req, res) => {
+  res.send("App running successfully");
 });
