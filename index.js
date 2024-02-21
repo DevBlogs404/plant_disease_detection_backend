@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 
 //middlewares
-app.use(express.json());
+// app.use(express.json());
 app.use(
   cors({
     origin: "*",
@@ -19,7 +19,10 @@ app.use(
 );
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://plant-disease-detection-frontend-eight.vercel.app/"
+  );
 
   next();
 });
