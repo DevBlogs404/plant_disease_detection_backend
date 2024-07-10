@@ -14,9 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "*",
-    methods: "GET,POST,DELETE,PATCH",
-    credentials: true,
+    origin: "https://plant-disease-detection-frontend-eight.vercel.app/*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 
