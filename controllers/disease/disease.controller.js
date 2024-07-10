@@ -10,13 +10,15 @@ const hf = new HfInference(API_TOKEN);
 // function for image upload and disease detection
 async function detectDisease(req, res) {
   try {
-    if (!req.file) {
+    let { image } = req.file;
+
+    if (!image) {
       return res.status(400).json({ error: "No image provided" });
     }
 
     const response = await hf.imageClassification({
       model: "A2H0H0R1/mobilenet_v2_1.0_224-plant-disease2",
-      data: req.file.buffer, // Use the buffer of the uploaded file
+      data: image, // Use the buffer of the uploaded file
     });
 
     // You can send the response back to the frontend or handle it accordingly
