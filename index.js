@@ -22,10 +22,10 @@ app.use(
 app.use("/api/v1", diseaseRoutes);
 app.use("/api/v1", translateRoutes);
 
-const port = process.env.PORT || 4949;
+const port = process.env.PORT;
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port http://localhost:${port}`);
 });
 
 app.use("/", (req, res) => {
