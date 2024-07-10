@@ -24,10 +24,10 @@ app.use("/api/v1", translateRoutes);
 
 const port = process.env.PORT;
 
-app.listen(port, () => {
-  console.log(`Server is running on port http://localhost:${port}`);
-});
-
 app.use("/", (req, res) => {
   res.send("App running successfully");
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port http://localhost:${port}`);
 });
